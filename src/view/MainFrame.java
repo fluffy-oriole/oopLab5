@@ -1,6 +1,7 @@
+package view;
+
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
 
 import static javax.swing.SwingConstants.CENTER;
 
@@ -12,6 +13,36 @@ public class MainFrame extends JFrame {
     private final JButton removeButton = new JButton("Удалить");
     private final JButton addButton = new JButton("Добавить");
     private final JButton findButton = new JButton("Найти");
+    private final JCheckBox carCheckBox = new JCheckBox("Машина");
+    private final JCheckBox trainCheckBox = new JCheckBox("Поезд");
+    private final JCheckBox expressCheckBox = new JCheckBox("Экспресс");
+    private final JTextField maxStateTextFieldFilter = new JTextField(15);
+    private final JTextField minStateTextFieldFilter = new JTextField(15);
+    private final JTextField filterTextField = new JTextField(15);
+
+    public JTextField getFilterTextField() {
+        return filterTextField;
+    }
+
+    public JTextField getMaxStateTextFieldFilter() {
+        return maxStateTextFieldFilter;
+    }
+
+    public JTextField getMinStateTextFieldFilter() {
+        return minStateTextFieldFilter;
+    }
+
+    public JCheckBox getCarCheckBox() {
+        return carCheckBox;
+    }
+
+    public JCheckBox getTrainCheckBox() {
+        return trainCheckBox;
+    }
+
+    public JCheckBox getExpressCheckBox() {
+        return expressCheckBox;
+    }
 
     public JButton getFindButton() {
         return findButton;
@@ -37,7 +68,7 @@ public class MainFrame extends JFrame {
         return table;
     }
 
-    MainFrame(String s) {
+    public MainFrame(String s) {
         super(s);
         ImageIcon ico = new ImageIcon("D:\\education\\объектно ориентированное программирование\\лабораторная работа №5\\gui\\src\\ico.png");
         setIconImage(ico.getImage());
@@ -75,30 +106,30 @@ public class MainFrame extends JFrame {
         typeFilterLabel.setHorizontalAlignment(CENTER);
         filterPanel.add(typeFilterLabel);
 
-        JCheckBox carCheckBox = new JCheckBox("Машина");
+
         carCheckBox.setSelected(true);
         filterPanel.add(carCheckBox);
-        JCheckBox trainCheckBox = new JCheckBox("Поезд");
+
         trainCheckBox.setSelected(true);
         filterPanel.add(trainCheckBox);
-        JCheckBox expressCheckBox = new JCheckBox("Экспресс");
+
         expressCheckBox.setSelected(true);
         filterPanel.add(expressCheckBox);
 
         JLabel nameFilterLabel = new JLabel("Имя");
         filterPanel.add(nameFilterLabel);
-        JTextField filterTextField = new JTextField(15);
+
         filterTextField.setMaximumSize(new Dimension(180, 30));
         filterPanel.add(filterTextField);
 
         JLabel maxStateFilterLabel = new JLabel("Макс. состояние");
         filterPanel.add(maxStateFilterLabel);
-        JTextField maxStateTextFieldFilter = new JTextField(15);
+
         maxStateTextFieldFilter.setMaximumSize(new Dimension(180, 30));
         filterPanel.add(maxStateTextFieldFilter);
         JLabel minStateFilterLabel = new JLabel("Мин. состояние");
         filterPanel.add(minStateFilterLabel);
-        JTextField minStateTextFieldFilter = new JTextField(15);
+
         minStateTextFieldFilter.setMaximumSize(new Dimension(180, 30));
         filterPanel.add(minStateTextFieldFilter);
 

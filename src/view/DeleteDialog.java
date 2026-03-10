@@ -1,7 +1,7 @@
+package view;
+
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 import static javax.swing.SwingConstants.CENTER;
 
@@ -17,7 +17,7 @@ public class DeleteDialog extends JDialog {
         return deleteButton;
     }
 
-    DeleteDialog() {
+    public DeleteDialog() {
         // JDialog deleteDialog = new JDialog();
         setSize(400, 200);
         JPanel deletePanel = new JPanel(new GridLayout(3, 1, 0, 15));

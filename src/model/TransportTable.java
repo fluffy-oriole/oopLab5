@@ -1,13 +1,37 @@
+package model;
+
 import javax.swing.table.AbstractTableModel;
 import java.util.ArrayList;
 
 public class TransportTable extends AbstractTableModel {
     private static final ArrayList<Transport> allTransport = new ArrayList<>();
+    private static boolean[] transportTypeFilter = new boolean[] {true, true, true};
+    private static double maxStateFilter = 100;
+    private static double minStateFilter = 0;
+    private static String nameFilter = "";
+
+    public static void setNameFilter(String nameFilter) {
+        TransportTable.nameFilter = nameFilter;
+    }
+
+    public static void setMaxStateFilter(double maxStateFilter) {
+        TransportTable.maxStateFilter = maxStateFilter;
+    }
+
+    public static void setMinStateFilter(double minStateFilter) {
+        TransportTable.minStateFilter = minStateFilter;
+    }
+
+    public static void setTransportTypeFilter(boolean[] transportTypeFilter) {
+        TransportTable.transportTypeFilter = transportTypeFilter;
+    }
+
     public void changeTable() {
         allTransport.clear();
         allTransport.addAll(Transport_company.getCars());
         allTransport.addAll(Transport_company.getTrains());
         allTransport.addAll(Transport_company.getExpresses());
+        filterTransport(transportTypeFilter, maxStateFilter, minStateFilter);
         fireTableDataChanged();
     }
 
@@ -62,8 +86,24 @@ public class TransportTable extends AbstractTableModel {
         this.changeTable();
     }
 
-    public static void filterTransport() {
-
+    public void filterTransport(boolean[] types, double maxStateFilter, double minStateFilter) {
+        ArrayList<Transport> filteredList = new ArrayList<>();
+        for (Transport transport : allTransport) {
+            if (transport.getState() <= maxStateFilter && transport.getState() >= minStateFilter
+                    && transport.getName().contains(nameFilter)) {
+                if (transport.getType().equals("Машина") && types[0]) {
+                    filteredList.add(transport);
+                }
+                if (transport.getType().equals("Поезд") && types[1]) {
+                    filteredList.add(transport);
+                }
+                if (transport.getType().equals("Экспресс") && types[2]) {
+                    filteredList.add(transport);
+                }
+            }
+        }
+        allTransport.clear();
+        allTransport.addAll(filteredList);
     }
 }
 

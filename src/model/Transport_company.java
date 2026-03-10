@@ -1,10 +1,10 @@
+package model;
+
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Objects;
-import java.util.Scanner;
 
 public class Transport_company {
-    static private Scanner scan = new Scanner(System.in);
     static private ArrayList<Car> cars = new ArrayList<>();
     static private ArrayList<Train> trains = new ArrayList<>();
     static private ArrayList<Express> expresses = new ArrayList<>();

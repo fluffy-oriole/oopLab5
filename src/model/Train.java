@@ -1,3 +1,5 @@
+package model;
+
 public class Train extends Transport {
     private int time_between_stops = 1;
     private double stop_duration = 0.5;

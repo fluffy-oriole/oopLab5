@@ -1,7 +1,7 @@
+package view;
+
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 import static javax.swing.SwingConstants.CENTER;
 
@@ -22,7 +22,7 @@ public class AddDialog extends JDialog {
         return dialogButton;
     }
 
-    AddDialog(JFrame parentFrame, String s) {
+    public AddDialog(JFrame parentFrame, String s) {
         super(parentFrame, s);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setSize(600, 400);

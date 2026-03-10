@@ -1,3 +1,5 @@
+package model;
+
 public abstract class Transport implements RouteCalculable, Displayable {
     private final String name;
     private double state;

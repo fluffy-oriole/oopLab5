@@ -1,13 +1,15 @@
+package view;
+
+import model.Transport;
+
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 import static javax.swing.SwingConstants.CENTER;
 
 public class FindDialog extends JDialog {
     private JButton acceptButton = new JButton("Найти");
-    private Transport[] foundTransport = new Transport[1];
+    private Transport foundTransport;
     private JTextField transportToFindTextField = new JTextField();
     private JLabel foundTransportType = new JLabel("тип");
     private JLabel foundTransportState = new JLabel("тип");
@@ -59,18 +61,23 @@ public class FindDialog extends JDialog {
         return transportToFindTextField;
     }
 
-    public Transport[] getFoundTransport() {
+    public Transport getFoundTransport() {
         return foundTransport;
+    }
+
+    public void setFoundTransport(Transport t) {
+        foundTransport = t;
     }
 
     public JButton getAcceptButton() {
         return acceptButton;
     }
 
-    FindDialog() {
+
+    public FindDialog() {
         // JDialog dialog = new JDialog();
-        setSize(400, 200);
-        foundTransport[0] = null;
+        setSize(400, 300);
+        foundTransport = null;
 
 
         setLayout(cards);
@@ -95,29 +102,30 @@ public class FindDialog extends JDialog {
         JPanel foundTransportLabels = new JPanel(new GridLayout(3, 2));
 
         JLabel type = new JLabel("Тип");
-        type.setHorizontalAlignment(CENTER);
         foundTransportLabels.add(type);
 
         foundTransportType.setHorizontalAlignment(CENTER);
         foundTransportLabels.add(foundTransportType);
 
         JLabel name = new JLabel("Название");
-        name.setHorizontalAlignment(CENTER);
         foundTransportLabels.add(name);
 
         foundTransportName.setHorizontalAlignment(CENTER);
         foundTransportLabels.add(foundTransportName);
 
         JLabel state = new JLabel("Состояние");
-        state.setHorizontalAlignment(CENTER);
         foundTransportLabels.add(state);
 
         foundTransportState.setHorizontalAlignment(CENTER);
         foundTransportLabels.add(foundTransportState);
 
-        foundTransportCard.add(foundTransportLabels, BorderLayout.CENTER);
 
-        JPanel foundTransportButtons = new JPanel(new GridLayout(2, 1, 0, 15));
+
+
+        JPanel foundTransportButtons = new JPanel(new GridLayout(3, 1, 0, 15));
+        foundTransportCard.add(foundTransportLabels, BorderLayout.CENTER);
+        JLabel inputKmToTravelLabel = new JLabel("Введите растояние поездки (в км)");
+        foundTransportButtons.add(inputKmToTravelLabel);
         foundTransportButtons.add(travelLengthInput);
 
         foundTransportButtons.add(makeTravelButton);
@@ -127,15 +135,20 @@ public class FindDialog extends JDialog {
         foundTransportCard.setBorder(BorderFactory.createEmptyBorder(20, 50, 20, 50));
         add(foundTransportCard, "TRAVEL");
 
-        JPanel resultTravel = new JPanel(new BorderLayout());
 
+
+
+
+        JPanel resultTravel = new JPanel(new BorderLayout());
+        resultTravel.setBorder(BorderFactory.createEmptyBorder(20, 50, 20, 50));
         resultTravel.add(closeButton, BorderLayout.SOUTH);
         JPanel resultLabels = new JPanel(new GridLayout(2, 2));
+
         JLabel timeLabel = new JLabel("Время поездки: ");
         resultLabels.add(timeLabel);
 
         resultLabels.add(time);
-        JLabel newStateLabel = new JLabel("Новое состояние транспорта: ");
+        JLabel newStateLabel = new JLabel("Новое состояние: ");
         resultLabels.add(newStateLabel);
 
         resultLabels.add(newState);

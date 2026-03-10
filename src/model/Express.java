@@ -1,3 +1,5 @@
+package model;
+
 public class Express extends Train{
 
     public Express(String name) {

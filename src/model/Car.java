@@ -1,3 +1,5 @@
+package model;
+
 public class Car extends Transport{
     public Car(String name) {
         super(name, 100);
