@@ -52,6 +52,22 @@ public class Controller {
                 dialog.getDeleteButton().addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
+                        String input = dialog.getDeleteTextField().getText();
+                        if (!Objects.equals(input, "")){
+                            try {
+                                int rowToDelete = Integer.parseInt(input);
+                                Transport currentTransport = TransportTable.getAllTransport().get(rowToDelete - 1);
+                                model.removeTransport(currentTransport);
+                                dialog.dispose();
+                            }
+                            catch (NumberFormatException exception) {
+                                JOptionPane.showMessageDialog(dialog, "Можно вводить только числа");
+                            }
+                        }
+                        else {
+                            JOptionPane.showMessageDialog(dialog, "Поле не должно быть пустым");
+                        }
+                        /*
                         if (Objects.equals(dialog.getDeleteTextField().getText(), "")) {
                             JOptionPane.showMessageDialog(dialog, "Поле не может быть пустым",
                                     "Ошибка", JOptionPane.ERROR_MESSAGE);
@@ -61,10 +77,10 @@ public class Controller {
                                     "Ошибка", JOptionPane.ERROR_MESSAGE);
                         }
                         else {
-
                             model.removeTransport(dialog.getDeleteTextField().getText());
                             dialog.dispose();
                         }
+                        */
                     }
                 });
             }

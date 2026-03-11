@@ -8,18 +8,18 @@ import java.awt.*;
 import static javax.swing.SwingConstants.CENTER;
 
 public class FindDialog extends JDialog {
-    private JButton acceptButton = new JButton("Найти");
+    private final JButton acceptButton = new JButton("Найти");
     private Transport foundTransport;
-    private JTextField transportToFindTextField = new JTextField();
-    private JLabel foundTransportType = new JLabel("тип");
-    private JLabel foundTransportState = new JLabel("тип");
-    private JLabel foundTransportName = new JLabel("тип");
-    private CardLayout cards = new CardLayout();
-    private JButton closeButton = new JButton("Закрыть");
-    private JButton makeTravelButton = new JButton("Совершить поездку");
-    private JLabel time = new JLabel("Время");
-    private JLabel newState = new JLabel("Состояние");
-    private JTextField travelLengthInput = new JTextField(15);
+    private final JTextField transportToFindTextField = new JTextField();
+    private final JLabel foundTransportType = new JLabel("тип");
+    private final JLabel foundTransportState = new JLabel("тип");
+    private final JLabel foundTransportName = new JLabel("тип");
+    private final CardLayout cards = new CardLayout();
+    private final JButton closeButton = new JButton("Закрыть");
+    private final JButton makeTravelButton = new JButton("Совершить поездку");
+    private final JLabel time = new JLabel("Время");
+    private final JLabel newState = new JLabel("Состояние");
+    private final JTextField travelLengthInput = new JTextField(15);
 
     public JTextField getTravelLengthInput() {
         return travelLengthInput;

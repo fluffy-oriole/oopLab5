@@ -5,9 +5,9 @@ import java.util.InputMismatchException;
 import java.util.Objects;
 
 public class Transport_company {
-    static private ArrayList<Car> cars = new ArrayList<>();
-    static private ArrayList<Train> trains = new ArrayList<>();
-    static private ArrayList<Express> expresses = new ArrayList<>();
+    static private final ArrayList<Car> cars = new ArrayList<>();
+    static private final ArrayList<Train> trains = new ArrayList<>();
+    static private final ArrayList<Express> expresses = new ArrayList<>();
 
     public static ArrayList<Car> getCars() {
         return cars;
@@ -40,18 +40,17 @@ public class Transport_company {
         return null;
     }
 
-    public static void remove_transport(String transport) {
-        Transport object = find_transport(transport);
-        if (object != null) {
+    public static void remove_transport(Transport transport) {
+        if (transport != null) {
             try {
-                if (Objects.equals(object.getType(), "Машина")){
-                    cars.remove((Car)object);
+                if (Objects.equals(transport.getType(), "Машина")){
+                    cars.remove((Car)transport);
                 }
-                else if (Objects.equals(object.getType(), "Поезд")){
-                    trains.remove((Train)object);
+                else if (Objects.equals(transport.getType(), "Поезд")){
+                    trains.remove((Train)transport);
                 }
                 else {
-                    expresses.remove((Express)object);
+                    expresses.remove((Express)transport);
                 }
             }
             catch (InputMismatchException e){

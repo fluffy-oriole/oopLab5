@@ -4,11 +4,15 @@ import javax.swing.table.AbstractTableModel;
 import java.util.ArrayList;
 
 public class TransportTable extends AbstractTableModel {
-    private static final ArrayList<Transport> allTransport = new ArrayList<>();
+    private static ArrayList<Transport> allTransport = new ArrayList<>();
     private static boolean[] transportTypeFilter = new boolean[] {true, true, true};
     private static double maxStateFilter = 100;
     private static double minStateFilter = 0;
     private static String nameFilter = "";
+
+    public static ArrayList<Transport> getAllTransport() {
+        return allTransport;
+    }
 
     public static void setNameFilter(String nameFilter) {
         TransportTable.nameFilter = nameFilter;
@@ -81,8 +85,8 @@ public class TransportTable extends AbstractTableModel {
         this.changeTable();
     }
 
-    public void removeTransport(String name) {
-        Transport_company.remove_transport(name);
+    public void removeTransport(Transport t) {
+        Transport_company.remove_transport(t);
         this.changeTable();
     }
 
