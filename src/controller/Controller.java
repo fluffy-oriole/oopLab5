@@ -67,20 +67,6 @@ public class Controller {
                         else {
                             JOptionPane.showMessageDialog(dialog, "Поле не должно быть пустым");
                         }
-                        /*
-                        if (Objects.equals(dialog.getDeleteTextField().getText(), "")) {
-                            JOptionPane.showMessageDialog(dialog, "Поле не может быть пустым",
-                                    "Ошибка", JOptionPane.ERROR_MESSAGE);
-                        }
-                        else if (Transport_company.find_transport(dialog.getDeleteTextField().getText()) == null) {
-                            JOptionPane.showMessageDialog(dialog, "Такого транспорта нет",
-                                    "Ошибка", JOptionPane.ERROR_MESSAGE);
-                        }
-                        else {
-                            model.removeTransport(dialog.getDeleteTextField().getText());
-                            dialog.dispose();
-                        }
-                        */
                     }
                 });
             }

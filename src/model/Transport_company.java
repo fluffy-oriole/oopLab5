@@ -66,29 +66,43 @@ public class Transport_company {
     }
 
     public static Transport find_transport(String name){
-        Car found_car;
+        Car found_car = null;
+        double maxState = -1;
         for (Car car : cars) {
-            if (car.getName().equals(name)) {
+            if (car.getName().equals(name) && car.getState() > maxState) {
+                maxState = car.getState();
                 found_car = car;
-                return found_car;
             }
         }
+        if (maxState != -1) {
+            return found_car;
+        }
 
-        Train found_train;
+
+        Train found_train = null;
         for (Train train : trains) {
-            if (train.getName().equals(name)) {
+            if (train.getName().equals(name) && train.getState() > maxState) {
+                maxState = train.getState();
                 found_train = train;
-                return found_train;
             }
         }
 
-        Express found_express;
+        if (maxState != -1) {
+            return found_train;
+        }
+
+        Express found_express = null;
         for (Express express : expresses) {
-            if (express.getName().equals(name)) {
+            if (express.getName().equals(name) && express.getState() > maxState) {
+                maxState = express.getState();
                 found_express = express;
-                return found_express;
             }
         }
+
+        if (maxState != -1) {
+            return found_express;
+        }
+
         return null;
     }
 }
